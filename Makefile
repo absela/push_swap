@@ -6,7 +6,7 @@
 #    By: absela <absela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/08 06:07:10 by absela            #+#    #+#              #
-#    Updated: 2022/06/08 06:22:38 by absela           ###   ########.fr        #
+#    Updated: 2022/06/09 05:05:50 by absela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ SRC := ft_split.c \
 		srting.c \
 		sort2-5.c \
 		
-SRC_BONUS := checker.c \
+SRC_BONUS := 	checker.c \
+				checker2.c \
+
 
 OBJ := $(SRC:.c=.o)
 OBJS_BONUS := $(SRC_BONUS:.c=.o)

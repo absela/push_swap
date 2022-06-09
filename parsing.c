@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:52 by absela            #+#    #+#             */
-/*   Updated: 2022/06/08 06:50:16 by absela           ###   ########.fr       */
+/*   Updated: 2022/06/09 04:58:24 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int	*parsing_input(int arc, char **arv, t_stack	*stack_a)
 		exit (0);
 	stack_a->totala = ft_tablen(argument_table);
 	stack_a->tableb = malloc (((stack_a->totala + 1) * sizeof(int)));
+	if (!stack_a->tableb)
+		exit (0);
 	while (argument_table[i])
 	{
 		checkchara(argument_table[i]);

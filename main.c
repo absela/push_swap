@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:43 by absela            #+#    #+#             */
-/*   Updated: 2022/06/08 06:55:17 by absela           ###   ########.fr       */
+/*   Updated: 2022/06/09 05:01:02 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,6 @@ int	main(int arc, char **arv)
 	parsing_input(arc, arv, stack_a);
 	stack_a->totalb = 0;
 	start_sort(stack_a);
-	while (i < stack_a->totala)
-	{
-		printf("	%d", stack_a->table[i]);
-		i++;
-	}
-	printf("\n");
 	ft_free(stack_a);
 	return (0);
 }

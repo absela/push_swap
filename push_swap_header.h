@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:56 by absela            #+#    #+#             */
-/*   Updated: 2022/06/08 06:43:11 by absela           ###   ########.fr       */
+/*   Updated: 2022/06/09 05:04:52 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_tack
 }t_stack;
 
 void	push_swap(char **taba);
+int		isempty(t_stack *pt);
 void	free_table(char **argument_table);
 int		start_sort(t_stack *stack);
 void	the_start(t_stack *stack);

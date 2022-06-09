@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:29 by absela            #+#    #+#             */
-/*   Updated: 2022/06/08 06:08:55 by absela           ###   ########.fr       */
+/*   Updated: 2022/06/09 04:56:14 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ void	sb(t_stack *stack_a, int k)
 	int	i;
 
 	i = stack_a->tableb[1];
-	if(k == 0)
-		return ;
 	stack_a->tableb[1] = stack_a->tableb[0];
 	stack_a->tableb[0] = i;
-	write(1, "sb\n", 3);
+	if (k == 1)
+		write(1, "sb\n", 3);
 }
 
 void	pb(t_stack *stack_a, int k)
@@ -30,7 +29,7 @@ void	pb(t_stack *stack_a, int k)
 	int	i;
 
 	i = 0;
-	if(k == 0)
+	if (k == 0)
 		return ;
 	if (stack_a->totala < 1)
 		exit(0);
@@ -59,7 +58,7 @@ void	rb(t_stack *stack_a, int k)
 
 	i = 0;
 	rev = stack_a->tableb[0];
-	if(k == 0)
+	if (k == 0)
 		return ;
 	while (i < stack_a->totalb)
 	{
@@ -76,7 +75,7 @@ void	rrb(t_stack *stack_a, int k)
 	int	i;
 
 	i = stack_a->totalb - 1;
-	if(k == 0)
+	if (k == 0)
 		return ;
 	rev = stack_a->tableb[i];
 	while (i > 0)

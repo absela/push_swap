@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:45:08 by absela            #+#    #+#             */
-/*   Updated: 2022/06/06 01:42:40 by absela           ###   ########.fr       */
+/*   Updated: 2022/06/09 05:36:49 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ int	check_already_sorted(t_stack	*stack_a)
 	int	i;
 
 	i = 0;
-	while (stack_a->table[i] && stack_a->table[i + 1] && stack_a->totala > i)
+	while (stack_a->table[i] && stack_a->totala > i)
 	{
 		if (stack_a->table[i] < stack_a->table[i + 1])
-		i++;
+			i++;
 		else
 			return (0);
 	}
-	exit (0);
+	exit (1);
 }
 
 void	checkspacearg(char	*str)
