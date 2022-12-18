@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 23:46:49 by absela            #+#    #+#             */
-/*   Updated: 2022/06/08 06:22:05 by absela           ###   ########.fr       */
+/*   Updated: 2022/12/18 21:21:44 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void	the_start(t_stack *stack)
 	while (stack->totala > 1)
 	{
 		fakett(stack);
-		stack->var1 = stack->index[stack->totala / 15];
-		stack->var2 = stack->index[(stack->totala / 15) / 2];
+		stack->var1 = stack->index[stack->totala / 8];
+		stack->var2 = stack->index[(stack->totala / 8) / 2];
 		ppb(stack);
 		free(stack->index);
 	}

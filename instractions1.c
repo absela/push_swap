@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 01:38:35 by absela            #+#    #+#             */
-/*   Updated: 2022/06/09 04:55:57 by absela           ###   ########.fr       */
+/*   Updated: 2022/12/18 20:59:53 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,12 @@ void	rra(t_stack *stack_a, int k)
 	stack_a->table[0] = rev;
 	if (k == 1)
 		write(1, "rra\n", 4);
+}
+
+void	rrr(t_stack *stack_a, int k)
+{
+	rra(stack_a, 0);
+	rrb(stack_a, 0);
+	if (k == 1)
+		write(1, "rrr\n", 4);
 }

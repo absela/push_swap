@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:45:02 by absela            #+#    #+#             */
-/*   Updated: 2022/06/08 01:11:22 by absela           ###   ########.fr       */
+/*   Updated: 2022/12/18 21:19:22 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	j = 0;
 	i = 0;
+	if (s1 == NULL)
+		return (NULL);
 	result = malloc((ft_strlen((char *)s1) + ft_strlen((char *)s2))
 			* sizeof(char) + 1);
 	if (!result)
@@ -30,11 +32,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	while (s2[j] != '\0')
-	{
-		result[i] = s2[j];
-		i++;
-		j++;
-	}
+		result[i++] = s2[j++];
 	result[i] = '\0';
 	free((char *)s1);
 	return (result);
@@ -44,28 +42,6 @@ int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
-}
-
-int	ft_putnbr(int n)
-{
-	int			i;
-	long long	nb;
-
-	i = 0;
-	nb = n;
-	if (n < 0)
-	{
-		i += ft_putchar('-');
-		nb = nb * -1;
-	}
-	if (nb > 9)
-	{
-		i += ft_putnbr(nb / 10);
-		i += ft_putnbr(nb % 10);
-	}
-	else
-		i += ft_putchar(nb + 48);
-	return (i);
 }
 
 int	ft_putstr(char *str)
@@ -83,25 +59,21 @@ int	ft_putstr(char *str)
 	return (0);
 }
 
-char	**gather_argument(char **stack_a, int number_argument)
+void	free_table(char **argument_table)
 {
-	char	*gather_string;
-	char	**separat_string;
-	int		i;
+	int	i;
 
 	i = 0;
-	(void)number_argument;
-	gather_string = "\0";
-	gather_string = malloc (1);
-	while (stack_a[i + 1] != NULL)
+	while (i < ft_tablen(argument_table))
 	{
-		if (ft_strlen(stack_a[i + 1]) == 0)
-			function_error();
-		checkspacearg(stack_a[i + 1]);
-		gather_string = ft_strjoin(gather_string, stack_a[i + 1]);
-		gather_string = ft_strjoin(gather_string, " ");
+		free(argument_table[i]);
 		i++;
 	}
-	separat_string = ft_split(gather_string, 32);
-	return (separat_string);
+	free(argument_table);
+}
+
+void	function_error(void)
+{
+	ft_putstr("Error\n");
+	exit(0);
 }

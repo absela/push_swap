@@ -6,108 +6,101 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:52 by absela            #+#    #+#             */
-/*   Updated: 2022/06/09 04:58:24 by absela           ###   ########.fr       */
+/*   Updated: 2022/12/18 21:18:55 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_header.h"
 
-void	function_error(void)
-{
-	ft_putstr("Error\n");
-	exit(0);
-}
-
-static int	conver(char *str)
-{
-	int		i;
-	int		k;
-	long	j;
-
-	i = 0;
-	j = 0;
-	k = 1;
-	if ((str[i] == '-') || (str[i] == '+'))
-	{
-		if (str[i] == '-')
-			k = -1;
-		i++;
-	}
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			j = (j * 10) + (str[i] - '0');
-			i++;
-		}
-	}
-	j = j * k;
-	convertc(str, i, j);
-	return (j);
-}
-
-static void	checkchara(char *str)
+int	is_sorted(t_stack *stack_a)
 {
 	int	i;
-	int	k;
 
 	i = 0;
-	k = 0;
-	if (str[i] == '-' || str[i] == '+' )
-		i++;
-	if (str[i] == '\0')
-		function_error();
-	while (str[i] != '\0')
+	while (stack_a->totala - 1 > i)
 	{
-		if (str[i] < '0' || str[i] > '9')
-			function_error();
-	i++;
+		if (stack_a->table[i] < stack_a->table[i + 1])
+			i++;
+		else
+			return (0);
 	}
+	exit (1);
 }
 
-void	check_for_duplicate(t_stack *stack_a)
+void	check_dup(t_stack *stack_a)
 {
-	int	u;
-	int	k;
+	int	i;
+	int	j;
 
-	u = stack_a->totala - 1;
-	while (u >= 0)
+	i = 0;
+	while (i < stack_a->totala)
 	{
-		k = u - 1;
-		while (k >= 0)
+		j = i + 1;
+		while (j < stack_a->totala)
 		{
-			if (stack_a->table[u] == stack_a->table[k])
+			if (stack_a->table[i] == stack_a->table[j])
 				function_error();
-			k--;
+			j++;
 		}
-		u--;
+		i++;
 	}
 }
 
-int	*parsing_input(int arc, char **arv, t_stack	*stack_a)
+void	check_im(char *str, int i, long result)
 {
-	char		**argument_table;
-	int			i;
+	if (str[i] != '\0' || result > 2147483647 || result < -2147483648)
+		function_error();
+}
+
+int	ft_atoi(char *str)
+{
+	int		i;
+	int		sign;
+	long	result;
 
 	i = 0;
-	if (arc < 2)
-		return (0);
-	argument_table = gather_argument(arv, arc);
-	stack_a->table = malloc((ft_tablen(argument_table) + 1) * sizeof(int));
-	if (!stack_a->table)
-		exit (0);
-	stack_a->totala = ft_tablen(argument_table);
-	stack_a->tableb = malloc (((stack_a->totala + 1) * sizeof(int)));
-	if (!stack_a->tableb)
-		exit (0);
-	while (argument_table[i])
+	sign = 1;
+	result = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || \
+		str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-')
 	{
-		checkchara(argument_table[i]);
-		stack_a->table[i] = conver(argument_table[i]);
+		sign = -1;
 		i++;
 	}
-	check_for_duplicate(stack_a);
-	check_already_sorted(stack_a);
-	free_table(argument_table);
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	check_im(str, i, result);
+	return (result * sign);
+}
+
+int	*parsing_start(int ac, char **av, t_stack *stack_a)
+{
+	char	**jn_table;
+	int		i;
+
+	jn_table = extra(ac, av);
+	i = 0;
+	while (jn_table[i])
+		i++;
+	stack_a->totala = i;
+	init_s(stack_a);
+	stack_a->totalb = 0;
+	i = 0;
+	while (jn_table[i])
+	{
+		check_char(jn_table[i]);
+		stack_a->table[i] = ft_atoi(jn_table[i]);
+		i++;
+	}
+	check_dup(stack_a);
+	is_sorted(stack_a);
+	free_table(jn_table);
 	return (stack_a->table);
 }

@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:56 by absela            #+#    #+#             */
-/*   Updated: 2022/06/09 05:04:09 by absela           ###   ########.fr       */
+/*   Updated: 2022/12/18 13:21:12 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ void	checker_2(t_stack *data, char *str)
 {
 	if (!ft_strcmp("pa\n", str))
 		pa(data, 0);
+	else if (!ft_strcmp("rr\n", str))
+		rr(data, 0);
+	else if (!ft_strcmp("rra\n", str))
+		rra(data, 0);
+	else if (!ft_strcmp("rrr\n", str))
+		rrr(data, 0);
+	else if (!ft_strcmp("ss\n", str))
+		ss(data, 0);
 	else
 	{
 		write(2, "Error\n", 6);
@@ -52,9 +60,7 @@ void	checker(t_stack *data)
 	str = get_next_line(0);
 	while (str)
 	{
-		if (!ft_strcmp("rra\n", str))
-			rra(data, 0);
-		else if (!ft_strcmp("ra\n", str))
+		if (!ft_strcmp("ra\n", str))
 			ra(data, 0);
 		else if (!ft_strcmp("sa\n", str))
 			sa(data, 0);
@@ -93,16 +99,16 @@ int	main(int ac, char **av)
 	stack_a = malloc(sizeof(t_stack));
 	if (!stack_a)
 		return (0);
-	parsing_input(ac, av, stack_a);
+	parsing_start(ac, av, stack_a);
 	checker(stack_a);
 	if (issorted(stack_a) && isempty(stack_a))
 	{
-		ft_putstr("OK");
+		ft_putstr("OK\n");
 		return (0);
 	}
 	else
 	{
-		ft_putstr("KO");
+		ft_putstr("KO\n");
 		return (0);
 	}
 	ffree1(str, stack_a);

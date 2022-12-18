@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:45:08 by absela            #+#    #+#             */
-/*   Updated: 2022/06/09 05:36:49 by absela           ###   ########.fr       */
+/*   Updated: 2022/12/15 19:00:09 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	checkspacearg(char	*str)
 
 	i = 0;
 	space = 0;
+	if (!str)
+		function_error();
 	while (str[i] != '\0')
 	{
 		if (str[i] == ' ')

@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:29 by absela            #+#    #+#             */
-/*   Updated: 2022/06/09 04:56:14 by absela           ###   ########.fr       */
+/*   Updated: 2022/12/18 13:45:23 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void	rrb(t_stack *stack_a, int k)
 	int	i;
 
 	i = stack_a->totalb - 1;
+	rev = stack_a->tableb[i];
 	if (k == 0)
 		return ;
-	rev = stack_a->tableb[i];
 	while (i > 0)
 	{
 		stack_a->tableb[i] = stack_a->tableb[i - 1];
