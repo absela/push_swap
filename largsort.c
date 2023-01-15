@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sortlarg.c                                         :+:      :+:    :+:   */
+/*   largsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 23:46:49 by absela            #+#    #+#             */
-/*   Updated: 2022/12/18 21:21:44 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/15 10:47:14 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_header.h"
-
-void	fakett(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	stack->index = malloc(stack->totala * sizeof(int));
-	if (!stack)
-		exit (0);
-	while (i < stack->totala)
-	{
-		stack->index[i] = stack->table[i];
-		i++;
-	}
-	fake_table_sort(stack);
-}
 
 void	ppb(t_stack *stack)
 {
@@ -40,39 +24,39 @@ void	ppb(t_stack *stack)
 		if (stack->totalb >= 2)
 			rb(stack, 1);
 	}
-	else if (stack->table[0] > stack->var1)
+	else
 		ra(stack, 1);
 }
 
-int	serchmax(t_stack *stack)
+int	poistion_max(t_stack *stack)
 {
-	int	max;
-	int	index;
 	int	i;
+	int	max;
+	int	pmax;
 
 	i = 0;
-	index = 0;
 	max = stack->tableb[0];
+	pmax = 0;
 	while (i < stack->totalb)
 	{
-		if (max < stack->tableb[i])
+		if (stack->tableb[i] > max)
 		{
 			max = stack->tableb[i];
-			index = i;
+			pmax = i;
 		}
 		i++;
 	}
-	return (index);
+	return (pmax);
 }
 
-void	b_to_a(t_stack *stack)
+void	sb_to_sa(t_stack *stack)
 {
 	int	pmax;
 	int	max;
 
 	while (stack->totalb)
 	{
-		pmax = serchmax(stack);
+		pmax = poistion_max(stack);
 		max = stack->tableb[pmax];
 		if (pmax <= stack->totalb / 2)
 		{
@@ -91,13 +75,24 @@ void	b_to_a(t_stack *stack)
 
 void	the_start(t_stack *stack)
 {
+	int	i;
+
 	while (stack->totala > 1)
 	{
-		fakett(stack);
+		i = 0;
+		stack->index = malloc(stack->totala * sizeof(int));
+		if (!stack)
+			exit (0);
+		while (i < stack->totala)
+		{
+			stack->index[i] = stack->table[i];
+			i++;
+		}
+		fake_table_sort(stack);
 		stack->var1 = stack->index[stack->totala / 8];
-		stack->var2 = stack->index[(stack->totala / 8) / 2];
+		stack->var2 = stack->index[(stack->totala / 9) / 2];
 		ppb(stack);
 		free(stack->index);
 	}
-	b_to_a(stack);
+	sb_to_sa(stack);
 }

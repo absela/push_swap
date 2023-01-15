@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort2-5.c                                          :+:      :+:    :+:   */
+/*   low_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 23:46:35 by absela            #+#    #+#             */
-/*   Updated: 2022/06/08 06:53:26 by absela           ###   ########.fr       */
+/*   Created: 2023/01/14 17:40:18 by absela            #+#    #+#             */
+/*   Updated: 2023/01/15 13:53:01 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ void	sort3(t_stack *stack)
 		ra(stack, 1);
 }
 
-int	searchthelow(t_stack *stack)
+int	low_positon(t_stack *stack)
 {
 	int	i;
 	int	low;
 	int	position;
 
+	i = 0;
 	low = stack->table[0];
 	position = 0;
-	i = 0;
 	while (i < stack->totala)
 	{
 		if (stack->table[i] < low)
@@ -69,38 +69,33 @@ int	searchthelow(t_stack *stack)
 	return (position);
 }
 
-void	continuesort5(t_stack *stack)
+void	low_sort(t_stack *stack)
 {
-	sort3(stack);
-	while (stack->totalb > 0)
-		pa(stack, 1);
-}
+	int	position;
 
-void	sort5(t_stack	*stack)
-{
-	int	i;
-
-	i = 0;
-	while (stack->totala > 3)
+	if (stack->totala == 2)
+		sort2(stack);
+	else if (stack->totala == 3)
+		sort3(stack);
+	else
 	{
-		i = searchthelow(stack);
-		if (i <= (stack->totala / 2))
+		position = low_positon(stack);
+		while (position != 0)
 		{
-			while (i != 0)
-			{
+			if (position <= stack->totala / 2)
 				ra(stack, 1);
-				i--;
-			}
-		}
-		else if (i > (stack->totala / 2))
-		{
-			while (i < stack->totala)
-			{
+			else
 				rra(stack, 1);
-				i++;
-			}
+			position = low_positon(stack);
 		}
 		pb(stack, 1);
+		low_sort(stack);
+		int i = 0 ;
+		while (stack->totalb > i)
+		{
+			printf("%d\n", stack->tableb[i]);
+			i++;
+		}
+		pa(stack, 1);
 	}
-	continuesort5(stack);
 }

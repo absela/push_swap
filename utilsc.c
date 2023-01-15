@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:45:15 by absela            #+#    #+#             */
-/*   Updated: 2022/12/18 21:01:07 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/15 10:45:41 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ void	fake_table_sort(t_stack *stack)
 		}
 		i++;
 	}
+}
+
+int	ft_tablen(char **table)
+{
+	int	i;
+
+	i = 0;
+	while (table[i] != NULL)
+		i++;
+	return (i);
 }
 
 void	sort_it(t_stack	*stack)

@@ -6,7 +6,7 @@
 #    By: absela <absela@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/08 06:07:10 by absela            #+#    #+#              #
-#    Updated: 2022/12/18 21:13:44 by absela           ###   ########.fr        #
+#    Updated: 2023/01/15 10:58:15 by absela           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,30 +19,26 @@ REMOV		=	$(RED)REMOVED$(RESET)
 
 all = push_swap
 
-CC=gcc
+CC = gcc
 
-UTILS=utils.o
+CFLAGS = -Wall -Wextra -Werror -g
 
-BUTILS=utils_bonus.o
+NAME = push_swap
 
-CFLAGS=-Wall -Wextra -Werror -g
-
-NAME=push_swap
-
-NM=checker
+NM = checker
 
 SRC =	ft_split.c \
 		utilsa.c	\
-		utilsb.c	\
 		utilsc.c	\
 		parsing.c \
    		instractions.c	\
 		instractions1.c	\
    		instractions2.c	\
-   		sortlarg.c	\
+   		largsort.c	\
 		srting.c \
-		sort2-5.c \
+		low_sort.c \
 		utilis5.c \
+		# main.c \
 
 
 SRC_BONUS = checker.c \
@@ -56,17 +52,16 @@ OBJS_BONUS = $(SRC_BONUS:.c=.o)
 HDR = push_swap_header.h
 
 %.o : %.c $(HDR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< 
 
 all: $(NAME)
 
 $(NAME):$(OBJ)
-	@$(CC) $(CFLAGS) main.c $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) main.c $(OBJ) -o $(NAME)
 	@printf "$(_SUCCESS) $(NAME) is ready!.\n"
 
 bonus : $(OBJS_BONUS) $(OBJ)
-	@$(CC) $(CFLAG) $(OBJS_BONUS) $(OBJ) -o ${NM}
-	@printf "$(_SUCCESS1) $(NAME) is ready!.\n" 
+	$(CC) $(CFLAG) $(OBJS_BONUS) $(OBJ) -o ${NM}
 
 clean :
 	@rm -rf  $(OBJ) $(OBJS_BONUS)

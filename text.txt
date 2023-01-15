@@ -1,0 +1,16 @@
+This code is a sorting algorithm called "push_swap" that is designed to sort a stack of integers. The main function "the_start" sorts the stack by moving the largest integers to a separate stack,
+sorting the second stack, and then merging the two stacks back together in sorted order.
+
+It starts by creating a new array, stack->index, which is a copy of the original stack->table. Then it calls the function "fake_table_sort" that sorts the copy of the original stack, in the stack->index.
+
+Then it splits the sorted stack->index into two parts:
+
+stack->var1 = stack->index[stack->totala / 8], this is the top 8th of the sorted stack.
+stack->var2 = stack->index[(stack->totala / 9) / 2], this is the middle element of the top 9th of the sorted stack.
+After that, it calls "ppb" function, which uses the variables stack->var1, and stack->var2 to determine which elements of the stack->table should be moved to the second stack.
+
+Finally, it calls "b_to_a" function, which is used to move the integers back to the first stack in sorted order.
+
+It repeats this process until the first stack has only one element left, meaning it is fully sorted.
+
+The choice of 8 and 9 here is arbitrary and can be adjusted to optimize the sorting algorithm for different input sizes and characteristics.

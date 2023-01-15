@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:03:52 by absela            #+#    #+#             */
-/*   Updated: 2022/12/18 21:19:35 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/15 11:09:12 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,8 @@ char	**extra(int ac, char **av)
 	while (++i < ac)
 	{
 		if (ft_strlen(av[i]) == 0)
-			exit(0);
-		str = ft_strjoin(str, av[i]);
-		str = ft_strjoin(str, " ");
+			function_error();
+		str = ft_strjoin(ft_strjoin(str, av[i]), " ");
 	}
 	jn_table = ft_split(str, ' ');
 	return (jn_table);

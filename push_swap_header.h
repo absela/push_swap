@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:56 by absela            #+#    #+#             */
-/*   Updated: 2022/12/18 21:25:23 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/15 10:56:46 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,10 @@ int		isempty(t_stack *pt);
 int		*parsing_start(int ac, char **av, t_stack *stack_a);
 int		start_sort(t_stack *stack);
 void	the_start(t_stack *stack);
-void	fakett(t_stack *stack);
 char	**ft_split(char const *s, char c);
 void	sort_it(t_stack	*stack);
 int		ft_atoi(char *str);
 int		ft_putchar(char c);
-void	sort5(t_stack	*stack);
 void	sort2(t_stack *stack);
 void	sort3(t_stack *stack);
 int		ft_putstr(char	*str);
@@ -54,8 +52,6 @@ void	function_error(void);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strlen(char	*str);
 int		ft_tablen(char **table);
-int		check_already_sorted(t_stack *stack_a);
-int		ft_intlen(int *table);
 void	sort2(t_stack *stack);
 void	sort3(t_stack *stack);
 void	sort_it(t_stack	*stack);
@@ -74,10 +70,8 @@ void	sa(t_stack *stack_a, int k);
 int		issorted(t_stack *pt);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup(const char *src);
-void	sort5(t_stack	*stack);
-int		searchthelow(t_stack *stack);
-void	checkspacearg(char	*str);
 void	sort_it(t_stack *stack);
 void	fake_table_sort(t_stack *stack);
+void	low_sort(t_stack *stack);
 
 #endif
