@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 23:46:49 by absela            #+#    #+#             */
-/*   Updated: 2023/01/15 10:47:14 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/18 20:50:01 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	ppb(t_stack *stack)
 	else
 		ra(stack, 1);
 }
+// void ppb(t_stack *stack)
+// {
+	
+// }
 
 int	poistion_max(t_stack *stack)
 {

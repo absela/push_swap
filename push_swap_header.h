@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:56 by absela            #+#    #+#             */
-/*   Updated: 2023/01/15 10:56:46 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/18 20:59:45 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <stddef.h>
 
-typedef struct s_tack
+typedef struct s_stack
 {
 	int	*table;
 	int	*tableb;
@@ -31,6 +31,8 @@ typedef struct s_tack
 }t_stack;
 
 int		init_s(t_stack *stack_a);
+int		check_speces(char *str);
+char	**my_split(char *str, int c, int i, int j);
 int		ft_isdigit(int c);
 char	*ft_strdup1(const char *s1);
 void	check_char(char *str);
@@ -38,10 +40,9 @@ char	**extra(int ac, char **av);
 void	function_error(void);
 void	free_table(char **argument_table);
 int		isempty(t_stack *pt);
-int		*parsing_start(int ac, char **av, t_stack *stack_a);
+void	parsing_start(int ac, char **av, t_stack *stack_a);
 int		start_sort(t_stack *stack);
 void	the_start(t_stack *stack);
-char	**ft_split(char const *s, char c);
 void	sort_it(t_stack	*stack);
 int		ft_atoi(char *str);
 int		ft_putchar(char c);

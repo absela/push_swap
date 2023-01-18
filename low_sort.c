@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:40:18 by absela            #+#    #+#             */
-/*   Updated: 2023/01/15 13:53:01 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/18 17:49:08 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,6 @@ void	low_sort(t_stack *stack)
 		}
 		pb(stack, 1);
 		low_sort(stack);
-		int i = 0 ;
-		while (stack->totalb > i)
-		{
-			printf("%d\n", stack->tableb[i]);
-			i++;
-		}
 		pa(stack, 1);
 	}
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilis5.c                                          :+:      :+:    :+:   */
+/*   utilis_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:03:52 by absela            #+#    #+#             */
-/*   Updated: 2023/01/15 11:09:12 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/18 20:58:58 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_header.h"
+#include "../push_swap_header.h"
 
 char	*ft_strdup1(const char *s1)
 {
@@ -84,6 +84,6 @@ char	**extra(int ac, char **av)
 			function_error();
 		str = ft_strjoin(ft_strjoin(str, av[i]), " ");
 	}
-	jn_table = ft_split(str, ' ');
+	jn_table = my_split(str, ' ', 0, 0);
 	return (jn_table);
 }

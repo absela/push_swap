@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:52 by absela            #+#    #+#             */
-/*   Updated: 2023/01/16 21:03:00 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/18 17:49:34 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_header.h"
-
-int	is_sorted(t_stack *stack_a)
-{
-	int	i;
-
-	i = 0;
-	while (stack_a->totala - 1 > i)
-	{
-		if (stack_a->table[i] < stack_a->table[i + 1])
-			i++;
-		else
-			return (0);
-	}
-	exit (1);
-}
+#include "../push_swap_header.h"
 
 void	check_dup(t_stack *stack_a)
 {
@@ -82,8 +67,8 @@ void	parsing_start(int ac, char **av, t_stack *stack_a)
 	char	**jn_table;
 	int		i;
 
-	i = 0;
 	jn_table = extra(ac, av);
+	i = 0;
 	while (jn_table[i])
 		i++;
 	stack_a->totala = i;
@@ -97,6 +82,5 @@ void	parsing_start(int ac, char **av, t_stack *stack_a)
 		i++;
 	}
 	check_dup(stack_a);
-	is_sorted(stack_a);
 	free_table(jn_table);
 }

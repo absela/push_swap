@@ -6,11 +6,11 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 05:03:19 by absela            #+#    #+#             */
-/*   Updated: 2022/12/18 13:25:44 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/15 14:51:56 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_header.h"
+#include "../push_swap_header.h"
 
 char	*ft_strdup(const char *src)
 {
@@ -59,4 +59,14 @@ int	isempty(t_stack *pt)
 	if (pt->totalb == 0)
 		return (1);
 	return (0);
+}
+
+int	ft_tablen(char **table)
+{
+	int	i;
+
+	i = 0;
+	while (table[i] != NULL)
+		i++;
+	return (i);
 }

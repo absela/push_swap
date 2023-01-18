@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utilsbb.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 20:44:43 by absela            #+#    #+#             */
-/*   Updated: 2023/01/18 17:48:53 by absela           ###   ########.fr       */
+/*   Created: 2023/01/15 15:37:10 by absela            #+#    #+#             */
+/*   Updated: 2023/01/15 15:37:29 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_header.h"
-#include <stdio.h>
+#include "../push_swap_header.h"
 
-static void	ft_free(t_stack	*stack_a)
+int	ft_strlen(char *str)
 {
-	free(stack_a->table);
-	free(stack_a->tableb);
-	free(stack_a);
-}
+	int	i;
 
-int	main(int ac, char **av)
-{
-	t_stack	*stack_a;
-
-	if (ac < 2)
+	i = 0;
+	if (!str)
 		return (0);
-	stack_a = malloc(sizeof(t_stack));
-	if (!stack_a)
-		return (0);
-	parsing_start(ac, av, stack_a);
-	if (stack_a->totala <= 7)
-		low_sort(stack_a);
-	else
-		sort_it(stack_a);
-	ft_free(stack_a);
-	return (0);
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

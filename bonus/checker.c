@@ -6,19 +6,23 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:44:56 by absela            #+#    #+#             */
-/*   Updated: 2022/12/18 13:21:12 by absela           ###   ########.fr       */
+/*   Updated: 2023/01/18 17:51:47 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_header.h"
+#include "../push_swap_header.h"
 
 char	*get_next_line(int fd)
 {
-	char	str[8000000];
+	char	*str;
 	int		i;
 	char	buff[1];
 	int		byte;
+	char	*tmp;
 
+	str = malloc(sizeof(char) * 4);
+	if (!str)
+		return (0);
 	byte = read(fd, buff, 1);
 	i = 0;
 	while (byte > 0)
@@ -31,7 +35,9 @@ char	*get_next_line(int fd)
 	str[i] = '\0';
 	if (str[0] == '\0')
 		return (0);
-	return (ft_strdup(str));
+	tmp = ft_strdup(str);
+	free(str);
+	return (tmp);
 }
 
 void	checker_2(t_stack *data, char *str)
